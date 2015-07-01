@@ -1,0 +1,79 @@
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+		
+		<beans:bean id="accessDecisionManager"
+		class="org.springframework.security.access.vote.AffirmativeBased">
+		<beans:constructor-arg name="decisionVoters">
+			<util:list>
+				<beans:bean class="org.springframework.security.access.vote.RoleVoter">
+					<beans:property name="rolePrefix" value="ROLE_" />
+				</beans:bean>
+				<beans:bean class="org.springframework.security.access.vote.AuthenticatedVoter" />
+			</util:list>
+		</beans:constructor-arg>
+	</beans:bean>
+	
+	<global-method-security pre-post-annotations="enabled" />
+		
+		<http auto-config="true" create-session="never">
+		
+		<!-- Employees urls -->
+		<intercept-url pattern="/service/employees/" access="ROLE_EMPLOYEES_ALL"/>
+		<intercept-url pattern="/service/employees/list" access="ROLE_EMPLOYEES_LIST"/>
+		<intercept-url pattern="/service/employees/add" access="ROLE_EMPLOYEES_NEW"/>
+		<intercept-url pattern="/service/employees/edit" access="ROLE_EMPLOYEES_EDIT"/>
+		<intercept-url pattern="/service/employees/delete" access="ROLE_EMPLOYEES_DELETE"/>
+		<intercept-url pattern="/service/employees/view" access="ROLE_EMPLOYEES_VIEW"/>
+		
+		<!-- Vendors urls -->
+		<intercept-url pattern="/service/vendors/list" access="ROLE_VRNDORS_LIST"/>
+		<intercept-url pattern="/service/vendors/add" access="ROLE_VRNDORS_NEW"/>
+		<intercept-url pattern="/service/vendors/edit" access="ROLE_VRNDORS_EDIT"/>
+		<intercept-url pattern="/service/vendors/delete" access="ROLE_VRNDORS_DELETE"/>
+		<intercept-url pattern="/service/vendors/view" access="ROLE_VRNDORS_VIEW"/>
+		
+		<intercept-url pattern="/admin/**" access="ROLE_ADMIN"/>
+		<intercept-url pattern="/service/**" access="IS_AUTHENTICATED_FULLY"/>
+		
+		<!-- <intercept-url pattern="/service/admin/*" access="ROLE_ADMIN"/>
+		<intercept-url pattern="/service/user/*" access="ROLE_ADMIN,ROLE_USER"/> -->
+		<form-login login-page="/login" default-target-url=""
+		always-use-default-target="false" authentication-failure-url="/login?auth=fail"/>
+		<logout logout-url="/logout" logout-success-url="/login"
+		delete-cookies="JSESSIONID" invalidate-session="true"/>
+		<session-management session-fixation-protection="migrateSession">
+		<concurrency-control max-sessions="1" expired-url="/sessionExpired"/>
+		</session-management>
+		</http>
+		
+<!-- 		<beans:bean id="daoAuthenticationProvider" class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">
+		<beans:property name="userDetailsService" ref="userDetailsService" />
+		</beans:bean>
+		
+		<beans:bean name="authenticationManager" class="org.springframework.security.authentication.ProviderManager">
+		<beans:property name="providers">
+		<beans:list>
+		<beans:ref local="daoAuthenticationProvider"/>
+		</beans:list>
+		</beans:property>
+		</beans:bean> -->
+		
+		<authentication-manager>
+		<authentication-provider user-service-ref="userDetailsService">
+		</authentication-provider>
+		</authentication-manager>
+		
+		<!-- <authentication-manager>
+		<authentication-provider user-service-ref="userDetailsService">
+		<user-service>
+		<user name="jesus" password="jesus" authorities="ROLE_ADMIN,ROLE_USER"/>
+		<user name="govind" password="govind" authorities="ROLE_USER"/>
+		</user-service>
+		</authentication-provider>
+		</authentication-manager> -->
+		</beans:beans>

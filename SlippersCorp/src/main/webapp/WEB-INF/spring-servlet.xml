@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+				http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
+	
+	<!-- Enables the Spring MVC @Controller programming model -->
+	<annotation-driven />
+	
+	<context:annotation-config />
+	<context:component-scan base-package="com.techconquerors.slippers" />
+	
+	<!-- Property Holders -->
+	<context:property-placeholder location="classpath:dbDetails.properties"/>
+	<!-- <util:properties id="dbConfig" location="classpath:dbDetails.properties" /> -->
+	
+	<beans:import resource="classpath:security-cfg.xml"/>
+	<beans:import resource="classpath:persistance-cfg.xml"/>
+	<beans:import resource="classpath:view-cfg.xml"/>
+	<beans:import resource="classpath:jasper-views.xml"/>
+	
+</beans:beans>

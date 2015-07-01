@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration PUBLIC "-//APACHE//DTD LOG4J 1.2//EN" "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+	<!-- Appenders -->
+	<appender name="console" class="org.apache.log4j.ConsoleAppender">
+		<param name="Target" value="System.out" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%-5p: %c - %m%n" />
+		</layout>
+	</appender>
+	
+	<appender name="fileAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="datePattern" value=".yyyy-MM-dd" />
+		<!-- creates log file in Home/Slippers directory -->
+		<!-- <param name="file" value="/home/dev/Slippers/root.log" /> -->
+		<!-- creates log file in current working directory : home/Govind/sts-bundle/sts-3.4../-->
+		<!-- <param name="file" value="/home/dev/Slippers/root.log" /> -->
+		<!-- creates log file in server working directory : /home/dev/server/apache-tomcat-7.0.40/Slippers or
+		/Home/server/apache-tomcat-7.0.40/Slippers-->
+		<param name="file" value="${catalina.home}/Slippers/root.log" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="conversionPattern"
+				value="%-5p %d{dd-MMM-yyyy-HH:mm:ss} [%10t] %c{2}: %M(%L): %m %n" />
+		</layout>
+	</appender>
+	
+	<!-- Application Loggers -->
+	<logger name="com.techconquerors.slippers.controllers">
+		<level value="info" />
+	</logger>
+	
+	<!-- 3rdparty Loggers -->
+	<logger name="org.springframework.core">
+		<level value="warn" />
+	</logger>
+	
+	<logger name="org.springframework.beans">
+		<level value="warn" />
+	</logger>
+	
+	<logger name="org.springframework.context">
+		<level value="warn" />
+	</logger>
+
+	<logger name="org.springframework.web">
+		<level value="warn" />
+	</logger>
+
+	<!-- Root Logger -->
+	<root>
+		<priority value="warn" />
+		<appender-ref ref="fileAppender" />
+		<appender-ref ref="console" />
+	</root>
+	
+</log4j:configuration>
