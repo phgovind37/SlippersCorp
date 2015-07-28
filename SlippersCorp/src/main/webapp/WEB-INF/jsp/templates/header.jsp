@@ -69,48 +69,12 @@ ul.nav li.dropdown:hover ul.dropdown-menu{
 <span class="span6" style="margin-left: 40px;">
 <img alt="Logo Image" src="<c:url value='/resources/images/Logo1.png'/>" width="400px;" height="120px;"/>
 </span>
-<span class="span6" >
-<a href="${pageContext.request.contextPath}/logout" class="pull-right" style="margin-top: 99px; margin-right: 5px;">Logout</a>
+<span class="span6 pull-right" style="margin-top: 100px;">Welcome <a href="#"><b><font color="black">${userName}</font></b></a> &nbsp;
+<a href="<c:url value='/employee/edit/'/>"><img style="height:17px;margin-bottom: 3px;" src="<c:url value='/resources/images/settings.jpg'/>" alt="set"></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="${pageContext.request.contextPath}/logout" style="margin-top: 99px; margin-right: 5px;">Logout</a>
 </span>
 </div>
 </div> 
-
-<%-- <nav class="navbar navbar-inverse">
-      <div class="container-fluid">
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-9">
-          <ul class="nav navbar-nav" style="margin-left: -30px;">
-          <li><a href="<c:url value="/" />"><img alt="home" src="<c:url value='/resources/images/ichome.png'/>"/></a></li>
-            <li class="dropdown">
-            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown"  aria-expanded="true">Users Management<b class="caret"></b></a>
-            <ul class="dropdown-menu">
-				<li><a href="/service/employees/list">Employees</a></li>
-				<!-- <li><a href="/schooladmin/school/class/listClasses">Grade Section </a></li>
-				<li><a href="/schooladmin/school/subject/subjectCourseWizard">Subject-Course </a></li>
-				<li><a href="/schooladmin/school/subject/subjectActivityMgmt/list/0">Subject Activities </a></li>
-				<li><a href="/service/patterns/list">Time Table Pattern</a></li> -->
-				</ul>
-            </li>
-            <li class="dropdown">
-            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown"  aria-expanded="true">Vendors Management<b class="caret"></b></a>
-            <ul class="dropdown-menu">
-				<li><a href="/service/vendots/list">Vendors</a></li>
-				</ul>
-             </li>
-             <li class="dropdown">
-             <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown"  aria-expanded="true">Products Management<b class="caret"></b></a>
-             <ul class="dropdown-menu">
-             	<li><a href="/service/products/categories/list">Product Categories</a></li>
-				<li><a href="/service/menproducts/list">Men's Products</a></li>
-				<li><a href="/service/womenproducts/list">Women's Products</a></li>
-				<li><a href="/service/kidsproducts/list">Kid's Products</a></li>
-				</ul>
-             </li>
-          </ul>
-        </div><!-- /.navbar-collapse -->
-      </div><!-- /.container-fluid -->
-    </nav> --%>
-
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<!-- Collect the nav links, forms, and other content for toggling -->

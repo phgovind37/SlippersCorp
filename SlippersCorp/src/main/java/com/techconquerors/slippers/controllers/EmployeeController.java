@@ -11,4 +11,10 @@ public class EmployeeController {
 	public String listEmployees(Model model){
 		return "employeesList";
 	}
+	
+	@RequestMapping(value="/service/employees/new")
+	public String newEmployee(Model model){
+		return "newEmployee";
+	}
+	
 }

@@ -60,12 +60,12 @@ public class HomeController {
 	
 	@RequestMapping("/admin/home")
     public String adminHome(Model model) {
-		final Authentication auth = SecurityContextHolder.getContext()
+		/*final Authentication auth = SecurityContextHolder.getContext()
 				.getAuthentication();
 		final String name = auth.getName(); // get logged in username
 		logger.info("Welcome to the user : "+name);
 		logger.warn("Warning.............");
-        model.addAttribute("message", "Hi Admin  : " + name + ", Welcome to 'Spring Security Custom Login Form Example'");
+        model.addAttribute("message", "Hi Admin  : " + name + ", Welcome to 'Spring Security Custom Login Form Example'");*/
         return "home";
     }
 	@RequestMapping("/service/user/home")
